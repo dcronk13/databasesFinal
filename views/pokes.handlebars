@@ -1,0 +1,84 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<h1>Pokemon Legends: Arceus - Adventure Database</h1>
+    <h2>Add/Search/Update/Delete...</h2>
+    <ul>
+      <li><a href = "/types">Types</li></a>
+      <li><a href = "/moves">Moves</li></a>
+      <li><a href = "/evolutions">Evolutions</li></a>
+      <li><a href = "/pokeMoves">Pokemon Movepool</a></li>
+    </ul>
+    <h2>My Pokemon Database</h2>
+    <h3>Search By:</h3>
+    <form id='search_pokes' action='' method=''>
+      <input type="text" id='poke_name_search_string' name='poke_name_search_string' placeholder="Pokemon Name.." value = ''>
+      <input type="button" value="Search" onclick="searchPokeName()"> 
+    </form>
+    <form id='filter_pokes' action='' method=''>
+      Types: <select id='types_filter' name="types"> 
+        {{#each types}}
+          <option value="{{typeID}}">{{typeName}}</option>
+        {{/each}}
+      </select>
+      <input type="button" value="Filter" onclick="filterPokes()">
+    </form>
+      <table border = "1" cellpadding = "5" cellspacing = "5" style="width: 80%;">
+        <thead>
+          <tr>
+             <th colspan = "10">Pokemon</th>
+          </tr>
+       </thead>
+        <tr>
+          <th>Name</th>
+          <th>Type 1</th>
+          <th>Type 2</th>
+          <th>Description</th>
+          <th>HP</th>
+          <th>Attack</th>
+          <th>Defense</th>
+          <th>Special Attack</th>
+          <th>Special Defense</th>
+          <th>Speed</th>
+        </tr>
+        {{#each pokes}}
+        <tr>
+          <td>{{pokeName}}</td>
+          <td>{{typeOne}}</td>
+          <td>{{typeTwo}}</td>
+          <td>{{pokeDescription}}</td>
+          <td>{{pokeHP}}</td>
+          <td>{{pokeAtk}}</td>
+          <td>{{pokeDef}}</td>
+          <td>{{pokeSpa}}</td>
+          <td>{{pokeSpd}}</td>
+          <td>{{pokeSpeed}}</td>
+          <td><a href="/pokes/{{pokeID}}">Update</a></td>
+          <td><button onclick="deletePoke({{pokeID}})">Delete</button></td>
+        </tr>
+        {{/each}}
+      </table>
+      <h3>Add Pokemon</h3>
+      <form id="addPoke" action="/pokes" method="post">
+        Name: <input type="text" name="Name" value="" required><br>
+        Type 1: <select name="type_1"> 
+        {{#each typesAdd}}
+          <option value="{{typeID}}">{{typeName}}</option>
+        {{/each}}
+        </select><br>
+        Type 2: <select name="type_2"> 
+        {{#each types}}
+          <option value="{{typeID}}">{{typeName}}</option>
+        {{/each}}
+        </select><br>
+        Description: <input type="text" name="Description" value="" required><br>
+        HP: <input type="number" name="HP" value="1" min = "1" max = "255"><br>
+        Attack: <input type="number" name="Attack" value="5" min ="5" max = "190"><br>
+        Defense: <input type="number" name="Defense" value="5" min ="5" max = "230"><br>
+        Special Attack:<input type="number" name="SpAttack" value="10" min ="10" max = "194"><br>
+        Special Defense<input type="number" name="SpDefense" value="20" min ="20" max = "230"><br>
+        Speed: <input type="number" name="Speed" value="5" min ="5" max = "200"><br>
+        <input type="submit" value="Add Pokemon">
+      </form>
+</html>
