@@ -1,0 +1,59 @@
+<h1>Pokemon Legends: Arceus - Adventure Database</h1>
+    <ul>
+      <li><a href = "/pokes">Pokemon</li></a>
+      <li><a href = "/types">Types</li></a>
+      <li><a href = "/moves">Moves</li></a>
+      <li><a href = "/evolutions">Evolutions</li></a>
+    </ul>
+    <h2>My Pokemon Movepool Database</h2>
+    <h3>Search By:</h3>
+    <form id='search_pid' action='' method=''>
+      Pokemon Name: <select id='pokes_filter' name="pokes"> 
+          <option value="0" selected>Select a Pokemon...</option>
+        {{#each pokes}}
+          <option value="{{pokeID}}">{{pokeName}}</option>
+        {{/each}}
+      </select>
+      <input type="button" value="Filter" onclick="filterPokesMoves()"> 
+    </form><br>
+    <form id='search_mid' action='' method=''>
+      Moves: <select id='moves_filter' name="moves">
+          <option value="0" selected>Select a Move...</option> 
+        {{#each moves}}
+          <option value="{{moveID}}">{{moveName}}</option>
+        {{/each}}
+      </select>
+      <input type="button" value="Filter" onclick="filterMovesPokes()"> 
+    </form><br>
+      <table border = "1" cellpadding = "5" cellspacing = "5" style="width: 30%;">
+        <thead>
+          <tr>
+             <th colspan = "3">Pokemon Movepool</th>
+          </tr>
+       </thead>
+        <tr>
+          <th>Pokemon</th>
+          <th>Move</th>
+        </tr>
+        {{#each pokeMoves}}
+        <tr>
+          <td>{{pokeName}}</td>
+          <td>{{moveName}}</td>
+          <td><button onclick="deletePokeMoves({{pid}},{{mid}})">Delete</button></td>
+        </tr>
+        {{/each}}
+      </table>
+      <h3>Add to Pokemon Movepool</h3>
+      <form id="addPokeMove" action="/pokeMoves" method="post">
+        Pokemon Name: <select id='pokes_filter_select' name="pokes_select"> 
+        {{#each pokes}}
+          <option value="{{pokeID}}">{{pokeName}}</option>
+        {{/each}}
+      </select><br>
+        Move Name: <select id='moves_filter_select' name="moves_select"> 
+        {{#each moves}}
+          <option value="{{moveID}}">{{moveName}}</option>
+        {{/each}}
+      </select><br>
+        <input type="submit" value="Add to Pokemon Movepool">
+      </form>
