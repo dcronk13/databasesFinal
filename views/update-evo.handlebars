@@ -1,0 +1,26 @@
+<html>
+<h1>Update {{evo.pokeName}}:</h1>
+<form id="update-evos" action="/evolutions" method="post">
+        Pokemon Name: <select id='poke' name="poke"> 
+        {{#each pokes}}
+          <option value="{{pokeID}}">{{pokeName}}</option>
+        {{/each}}
+      </select><br>
+        Condition: <input type="text" name="Condition" value = "{{evo.evoCondition}}" required><br>
+        Level: <input type="number" name="Level" value= "{{evo.evoLevel}}" min = "7" max = "64" ><br>
+        Pre-Evolution: <select id='poke_pre' name="poke_pre">
+          <option value ="">None</option> 
+        {{#each pokes}}
+          <option value="{{pokeID}}">{{pokeName}}</option>
+        {{/each}}
+      </select><br>
+      Post-Evolution: <select id='poke_post' name="poke_post"> 
+          <option value ="">None</option>
+        {{#each pokes}}
+          <option value="{{pokeID}}">{{pokeName}}</option>
+        {{/each}}
+      </select><br>
+</form>
+<button onclick="updateEvos({{evo.evoID}})">Update</button>
+<script defer>selectPokes({{evo.pokeEvo}},{{evo.preEvo}},{{evo.postEvo}});</script>
+</html>
