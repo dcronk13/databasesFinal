@@ -1,0 +1,116 @@
+<html>
+<h1>Update {{type.typeName}}:</h1>
+<form id="update-types" action="/types" method="post">
+        Type Name: <input type="text" name="Name" value="{{type.typeName}}"><br>
+        Normal: <select name="Normal" id="Normal">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Fire: <select name="Fire" id="Fire">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Water: <select name="Water" id="Water">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Grass: <select name="Grass" id="Grass">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Electric: <select name="Electric" id="Electric">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Ice: <select name="Ice" id="Ice">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Fighting: <select name="Fighting" id="Fighting">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Poison: <select name="Poison" id="Poison">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Ground: <select name="Ground" id="Ground">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Flying: <select name="Flying" id="Flying">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Psychic: <select name="Psychic" id="Psychic">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Bug: <select name="Bug" id="Bug">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Rock: <select name="Rock" id="Rock">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Ghost: <select name="Ghost" id="Ghost">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Dark: <select name="Dark" id="Dark">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Dragon: <select name="Dragon" id="Dragon">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Steel: <select name="Steel" id="Steel">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+        Fairy: <select name="Fairy" id="Fairy">
+          <option value="0">0</option>
+          <option value="0.5">.5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select><br>
+</form>
+<button onclick="updateTypes({{type.typeID}})">Update</button>
+<script defer>selectEffects({{type.normal}},{{type.fire}},{{type.water}},{{type.grass}},{{type.electric}},{{type.ice}},{{type.fighting}},{{type.poison}},{{type.ground}},{{type.flying}},{{type.psychic}},{{type.bug}},{{type.rock}},{{type.ghost}},{{type.dark}},{{type.dragon}},{{type.steel}},{{type.fairy}});</script>
+</html>
