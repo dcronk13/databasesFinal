@@ -1,0 +1,66 @@
+<h1>Pokemon Legends: Arceus - Adventure Database</h1>
+    <h2>Add/Search/Update/Delete...</h2>
+    <ul>
+      <li><a href = "/pokes">Pokemon</li></a>
+      <li><a href = "/types">Types</li></a>
+      <li><a href = "/moves">Moves</li></a>
+      <li><a href = "/pokeMoves">Pokemon Movepool</a></li>
+    </ul>
+    <h2>My Evolution Database</h2>
+    <h3>Search By:</h3>
+    <form id='search_pokes' action='' method=''>
+      <input type="text" id='poke_name_search_string' name='poke_name_search_string' placeholder="Pokemon Name.." value = ''>
+      <input type="button" value="Search" onclick="searchPokeName()"> 
+    </form>
+    <form id='search_condition' action='' method=''>
+      <input type="text" id='condition_search_string' name='condition_search_string' placeholder="Condition.." value = ''>
+      <input type="button" value="Search" onclick="searchConditions()"> 
+    </form>
+    <table border = "1" cellpadding = "5" cellspacing = "5" style="width: 50%;">
+        <thead>
+          <tr>
+             <th colspan = "7">Evolutions</th>
+          </tr>
+       </thead>
+        <tr>
+            <th>Pokemon</th>
+            <th>Condition</th>
+            <th>Level</th>
+            <th>Pre-Evolution</th>
+            <th>Post-Evolution</th>
+        </tr>
+        {{#each evos}}
+        <tr>
+          <td>{{pokeEvo}}</td>
+          <td>{{evoCondition}}</td>
+          <td>{{evoLevel}}</td>
+          <td>{{preEvo}}</td>
+          <td>{{postEvo}}</td>
+          <td><a href="/evolutions/{{evoID}}">Update</a></td>
+          <td><button onclick="deleteEvo({{evoID}})">Delete</button></td>
+        </tr>
+        {{/each}}
+      </table>
+      <h3>Add Evolution</h3>
+      <form id="addEvolution" action="/evolutions" method="post">
+        Pokemon Name: <select id='poke_add' name="poke_add"> 
+        {{#each pokes}}
+          <option value="{{pokeID}}">{{pokeName}}</option>
+        {{/each}}
+      </select><br>
+        Condition: <input type="text" id="Condition" name="Condition" required><br>
+        Level: <input type="number" id="Level" name="Level" min="7" max="64"><br>
+        Pre-Evolution: <select id='poke_pre_add' name="poke_pre_add">
+          <option value ="" selected>Select a Pre-Evolution..</option> 
+        {{#each pokes}}
+          <option value="{{pokeID}}">{{pokeName}}</option>
+        {{/each}}
+      </select><br>
+        Post-Evolution: <select id='poke_post_add' name="poke_post_add"> 
+          <option value ="" selected>Select a Post-Evolution..</option>
+        {{#each pokes}}
+          <option value="{{pokeID}}">{{pokeName}}</option>
+        {{/each}}
+      </select><br>
+        <input type="submit" value="Add Evolution">
+      </form>
