@@ -1,0 +1,97 @@
+<h1>Pokemon Legends: Arceus - Adventure Database</h1>
+    <h2>Add/Search/Update/Delete...</h2>
+    <ul>
+      <li><a href = "/pokes">Pokemon</li></a>
+      <li><a href = "/types">Types</li></a>
+      <li><a href = "/evolutions">Evolutions</li></a>
+      <li><a href = "/pokeMoves">Pokemon Movepool</a></li>
+    </ul>
+    <h2>My Move Database</h2>
+    <h3>Search By:</h3>
+    <form id='search_moves' action='' method=''>
+      <input type="text" id='move_name_search_string' name='move_name_search_string' placeholder="Move Name.." value = ''>
+      <input type="button" value="Search" onclick="searchMoveName()"> 
+    </form><br>
+    <form id='filter_moves' action='' method=''>
+      Types: <select id='types_filter' name="types"> 
+        {{#each types}}
+          <option value="{{typeID}}">{{typeName}}</option>
+        {{/each}}
+      </select>
+      <input type="button" value="Filter" onclick="filterMovesByType()">
+    </form><br>
+    <form>
+      Move Type: <select id='MoveType_filter' name="moveType">
+        <option value = "0">Select Move Type...</option>
+        <option value = "physical">Physical</option>
+        <option value = "special">Special</option>
+        <option value = "status">Status</option>
+      <input type="button" value="Filter" onclick="filterMovesByMoveType()">
+    </form><br>
+    <table border = "1" cellpadding = "5" cellspacing = "5" style="width: 80%;">
+        <thead>
+          <tr>
+             <th colspan = "12">Moves</th>
+          </tr>
+       </thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>PP</th>
+            <th>Power</th>
+            <th>Accuracy</th>
+            <th>Physical</th>
+            <th>Special</th>
+            <th>Status</th>
+            <th>Effect Chance</th>
+        </tr>
+        {{#each moves}}
+        <tr>
+            <td>{{moveName}}</td>
+            <td>{{moveType}}</td>
+            <td>{{moveDescription}}</td>
+            <td>{{PP}}</td>
+            <td>{{power}}</td>
+            <td>{{accuracy}}</td>
+            {{#if physical}}
+            <td style="background-color:green"></td>
+            {{else}}
+            <td style="background-color:white"></td>
+            {{/if}}
+            {{#if special}}
+            <td style="background-color:green"></td>
+            {{else}}
+            <td style="background-color:white"></td>
+            {{/if}}
+            {{#if status}}
+            <td style="background-color:green"></td>
+            {{else}}
+            <td style="background-color:white"></td>
+            {{/if}}
+            <td>{{effectChance}}</td>
+            <td><a href="/moves/{{moveID}}">Update</a></td>
+            <td><button onclick="deleteMove({{moveID}})">Delete</button></td>
+        </tr>
+        {{/each}}
+      </table>
+      <h3>Add Move</h3>
+      <form id="addMove" action="/moves" method="post">
+        Move Name: <input type="text" id="Name" name="Name" required><br>
+        Types: <select id='type_add' name="type_add"> 
+        {{#each typesAdd}}
+          <option value="{{typeID}}">{{typeName}}</option>
+        {{/each}}
+        </select><br>
+         Description: <input type="text" id="Description" name="Description" required><br>
+        PP: <input type="number" id="PP" name="PP" value= "5" min="5" max = "40" step="5"><br>
+        Power: <input type="number" id="Power" name="Power" min = "10" max ="250" step = "5"><br>
+        Accuracy: <input type="number" id="Accuracy" name="Accuracy" min="30" max="100" step="5"><br>
+        Move Type: <select id='MoveType_add' name="moveTypeAdd">
+          <option value = "physical">Physical</option>
+          <option value = "special">Special</option>
+          <option value = "status">Status</option>
+        </select><br>
+        Effect Chance: <input type="number" id="EffectChance" name="EffectChance" min="0" max="100" step="5"><br>
+        <input type="submit" value="Add Move">
+      </form>
