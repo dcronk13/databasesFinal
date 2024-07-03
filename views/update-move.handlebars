@@ -1,0 +1,35 @@
+<html>
+<h1>Update {{move.moveName}}:</h1>
+<form id="update-moves" action="/moves" method="post">
+        Move Name: <input type="text" name="Name" value="{{move.moveName}}" required><br>
+        Type 1: <select name="type" id="type_selector"> 
+        {{#each typesAdd}}
+            <option value="{{typeID}}">{{typeName}}</option>
+        {{/each}}
+        </select><br>
+        Description: <input type="text" name="Description" value = "{{move.moveDescription}}" required><br>
+        PP: <input type="number" name="PP" value= "{{move.PP}}" min = "5" max = "40" step="5"><br>
+        Power: <input type="number" name="Power" value= "{{move.power}}" min ="10" max = "250" step="5"><br>
+        Accuracy: <input type="number" name="Accuracy" value= "{{move.accuracy}}" min ="30" max = "100" step="5"><br>
+        Move Type: <select id='moveType' name="moveType">
+        {{#if move.physical}}
+            <option value = "physical" selected>Physical</option>
+        {{else}}
+            <option value = "physical">Physical</option>
+        {{/if}}
+        {{#if move.special}}
+            <option value = "special" selected>Special</option>
+        {{else}}
+            <option value = "special">Special</option>
+        {{/if}}
+        {{#if move.status}}
+            <option value = "status" selected>Status</option>
+        {{else}}
+            <option value = "status">Status</option>
+        {{/if}}
+        </select><br>
+        Effect Chance: <input type="number" name="EffectChance" value="{{move.effectChance}}" min ="0" max = "100" step="5"><br>
+</form>
+<button onclick="updateMoves({{move.moveID}})">Update</button>
+<script defer>selectType({{move.moveType}});</script>
+</html>
