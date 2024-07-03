@@ -1,0 +1,27 @@
+
+<html>
+<h1>Update {{poke.pokeName}}:</h1>
+<p>Must not leave fields for Name and Description blank or update will not go through</p>
+<form id="update-pokes" action="/pokes" method="post">
+        Name: <input type="text" name="Name" value="{{poke.pokeName}}" required><br>
+        Type 1: <select name="type_1" id="type_selector_1"> 
+        {{#each typesAdd}}
+            <option value="{{typeID}}">{{typeName}}</option>
+        {{/each}}
+        </select><br>
+        Type 2: <select name="type_2" id="type_selector_2"> 
+        {{#each types}}
+            <option value="{{typeID}}">{{typeName}}</option>
+        {{/each}}
+        </select><br>
+        Description: <input type="text" name="Description" value = "{{poke.pokeDescription}}" required><br>
+        HP: <input type="number" name="HP" value= "{{poke.pokeHP}}" min = "1" max = "255"><br>
+        Attack: <input type="number" name="Attack" value= "{{poke.pokeAtk}}" min ="5" max = "190"><br>
+        Defense: <input type="number" name="Defense" value= "{{poke.pokeDef}}" min ="5" max = "230"><br>
+        Special Attack:<input type="number" name="SpAttack" value="{{poke.pokeSpa}}" min ="10" max = "194"><br>
+        Special Defense<input type="number" name="SpDefense" value="{{poke.pokeSpd}}" min ="20" max = "230"><br>
+        Speed: <input type="number" name="Speed" value="{{poke.pokeSpeed}}" min ="5" max = "200"><br>
+</form>
+<button onclick="updatePokes({{poke.pokeID}})">Update</button>
+<script defer>selectTypes({{poke.typeOne}},{{poke.typeTwo}});</script>
+</html>
